@@ -13,8 +13,9 @@
   body {
     min-height: 100vh;
     font-size: 1.5rem;
-    background-image: url('./012\ \(1\).jpg');
-
+    background-image: url('./wp2177828-ghost-recon-wildlands-wallpapers.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
   }
   
   input,
