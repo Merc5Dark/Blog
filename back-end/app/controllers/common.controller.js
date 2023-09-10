@@ -28,14 +28,14 @@ const users =  [
 let posts =  [
   {
     "id": 1,
-    "title": "This is my post.",
+    "title": "Modern Warfare III",
     "body": "The healthy human mind doesn’t wake up in the morning thinking this is its last day on Earth. But I think that’s a luxury, not a curse. To know you’re close to the end is a kind of freedom. Good time to take inventory. Out-gunned. Outnumbered. Out of our minds. On a suicide mission. But the sand and the rocks here, stained with thousands of years of warfare. They will remember us. For this. Because out of all our vast array of nightmares, this is the one we choose for ourselves. We go forward like a breath exhaled from the Earth. With vigor in our hearts and one goal in sight: We. Will. Kill him",
     "userId": 1,
     "date": "2022-05-02T20:41:05.437Z"
   },
   {
     "id": 2,
-    "title": "Test",
+    "title": "Modern Warfare II",
     "body": "Too right, mate. Now in the eyes of the world, they're the victims. Nobody's gonna say a word when the Russians club every American they can reach.",
     "userId": 2,
     "date": "2023-09-03T23:52:23.4372"

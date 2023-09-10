@@ -1,5 +1,5 @@
 {
-  "name": "resultmanagementsystem",
+  "name": "blog",
   "version": "1.0.0",
   "description": "Result Management System",
   "main": "app.js",
@@ -10,7 +10,7 @@
     "node",
     "express"
   ],
-  "author": "Karamjot Sandhu",
+  "author": "Merc5Dark",
   "license": "ISC",
   "dependencies": {
     "body-parser": "^1.20.1",
