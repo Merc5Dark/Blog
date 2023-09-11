@@ -50,63 +50,70 @@ let posts =  [
   {
     "id": 4,
     "title": "Modern Warfare",
-    "body": "",
+    "body": "All warfare is based on deception. For years, the West's hypocrisy has made the world a battlefield. The corrupt talk; while our brothers and sons spill their own blood. But deceit cuts both ways. The bigger the lie, the more likely people will believe it, and when a nation cries for vengeance, the lie spreads like a wildfire. The fire builds, devouring everything in its path. Our enemies believe that they alone dictate the course of history, but all it takes is the will of a single man.",
     "userId": 4,
     "date": "2023-07-26T00:01.4372"
   }
 ]
 
+// Create a new post
 exports.create = (req, res) => {
-    const post = {
-      id: posts.length + 1,
-      title: req.body.title,
-      body: req.body.body,
-      userId : req.body.userId,
-      date: req.body.date,
-      reactions: req.body.reactions
-    };
-    posts.push(post);
-    res.send();
+  const post = {
+    id: posts.length + 1,
+    title: req.body.title,
+    body: req.body.body,
+    userId: req.body.userId,
+    date: req.body.date,
+    reactions: req.body.reactions
   };
-  
-  exports.findAll = (req, res) => {
-        res.send(posts);
-  };
-  
-  exports.update = (req, res) => {
-    const id = req.params.id;
-    const allPosts = posts.map(post => post);
-    const index = allPosts.findIndex(post => post.id === parseInt(id));
-    allPosts[index].title = req.body.title;
-    allPosts[index].body = req.body.body;
-    allPosts[index].userId = req.body.userId;
-    allPosts[index].date = req.body.date;    
-    posts = allPosts.map(post => post);
-    res.send();
-  };
-  
-  exports.delete = (req, res) => {
-    const id = req.params.id;
-    const index = posts.findIndex(post => post.id === id);
-    posts.splice(index, 1);
-    res.send();
-  };
+  posts.push(post);
+  res.send();
+};
 
-  exports.reactions = (req, res) => {
-    const id = req.params.id;
-    const allPosts = posts.map(post => post);
-    const index = allPosts.findIndex(post => post.id === parseInt(id));
-    allPosts[index].reactions = req.body.reactions;
-    posts = allPosts.map(post => post);
-    res.send();
-  };
+// Find all posts
+exports.findAll = (req, res) => {
+  res.send(posts); 
+};
 
-  exports.users = (req, res) => {    
-    res.send(users);
-  }
-  
-  exports.postsFindByUserId = (req, res) => {
-    const id = req.query.userId;
-    console.log(req.params);
-    res.send(posts.filter(post => post.userId === parseInt(id)));
-  }
+// Update a post by ID
+exports.update = (req, res) => {
+  const id = req.params.id;
+  const allPosts = posts.map(post => post);
+  const index = allPosts.findIndex(post => post.id === parseInt(id));
+  // Update the properties of the post with the specified ID
+  allPosts[index].title = req.body.title;
+  allPosts[index].body = req.body.body;
+  allPosts[index].userId = req.body.userId;
+  allPosts[index].date = req.body.date;
+  posts = allPosts.map(post => post); 
+  res.send();
+};
+
+// Delete a post by ID
+exports.delete = (req, res) => {
+  const id = req.params.id;
+  const index = posts.findIndex(post => post.id === id);
+  posts.splice(index, 1); 
+  res.send(); 
+};
+
+// Update reactions for a post by ID
+exports.reactions = (req, res) => {
+  const id = req.params.id;
+  const allPosts = posts.map(post => post);
+  const index = allPosts.findIndex(post => post.id === parseInt(id));
+  allPosts[index].reactions = req.body.reactions;
+  posts = allPosts.map(post => post);
+  res.send();
+};
+
+// Get all users
+exports.users = (req, res) => {
+  res.send(users); 
+};
+
+// Find posts by a specific user ID
+exports.postsFindByUserId = (req, res) => {
+  const id = req.query.userId;
+  res.send(posts.filter(post => post.userId === parseInt(id))); 
+};
