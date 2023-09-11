@@ -1,48 +1,60 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAddNewPostMutation } from "./postsSlice";
 import { useGetUsersQuery } from "../users/usersSlice";
 
 const AddPostForm = () => {
-    const [addNewPost, { isLoading }] = useAddNewPostMutation()
+    // Initialize the addNewPost mutation function and isLoading flag
+    const [addNewPost, { isLoading }] = useAddNewPostMutation();
 
-    const navigate = useNavigate()
+    // Initialize the React Router navigation function
+    const navigate = useNavigate();
 
-    const [title, setTitle] = useState('')
-    const [content, setContent] = useState('')
-    const [userId, setUserId] = useState('')
+    // Initialize state variables for the post title, content, and selected user ID
+    const [title, setTitle] = useState('');
+    const [content, setContent] = useState('');
+    const [userId, setUserId] = useState('');
 
-    const { data: users, isSuccess } = useGetUsersQuery('getUsers')
+    // Fetch a list of users and their data using the useGetUsersQuery hook
+    const { data: users, isSuccess } = useGetUsersQuery('getUsers');
 
-    const onTitleChanged = e => setTitle(e.target.value)
-    const onContentChanged = e => setContent(e.target.value)
-    const onAuthorChanged = e => setUserId(e.target.value)
+    // Event handler functions to update state when user inputs change
+    const onTitleChanged = e => setTitle(e.target.value);
+    const onContentChanged = e => setContent(e.target.value);
+    const onAuthorChanged = e => setUserId(e.target.value);
 
-
+    // Check if all required fields are filled and not in the process of loading
     const canSave = [title, content, userId].every(Boolean) && !isLoading;
 
+    // Event handler for saving the post
     const onSavePostClicked = async () => {
         if (canSave) {
             try {
-                await addNewPost({ title, body: content, userId }).unwrap()
+                // Execute the addNewPost mutation and unwrap the result
+                await addNewPost({ title, body: content, userId }).unwrap();
 
-                setTitle('')
-                setContent('')
-                setUserId('')
-                navigate('/')
+                // Clear input fields and navigate to the home page
+                setTitle('');
+                setContent('');
+                setUserId('');
+                navigate('/');
             } catch (err) {
-                console.error('Failed to save the post', err)
+                console.error('Failed to save the post', err);
             }
         }
-    }
+    };
 
-    let usersOptions
+    // Initialize an empty variable to hold user options for the dropdown
+    let usersOptions;
+
+    // If the users data has been successfully fetched
     if (isSuccess) {
+        // Map each user ID to an option element in the dropdown
         usersOptions = users.ids.map(id => (
             <option key={id} value={id}>
                 {users.entities[id].name}
             </option>
-        ))
+        ));
     }
 
     return (
@@ -76,6 +88,7 @@ const AddPostForm = () => {
                 >Save Post</button>
             </form>
         </section>
-    )
-}
-export default AddPostForm
+    );
+};
+
+export default AddPostForm;
