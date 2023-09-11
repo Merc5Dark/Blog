@@ -16,6 +16,20 @@ body {
   background-image: url('./wp2177828-ghost-recon-wildlands-wallpapers.jpg');
   background-size: cover;
   background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+}
+
+body::-webkit-scrollbar {
+  width: 0.5em;
+}
+
+body::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: transparent;
 }
   
 input,
@@ -32,7 +46,7 @@ header {
   justify-content: space-between;
   align-items: flex-start;
   background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(23, 39, 51, 0.8), rgba(0, 0, 0, 0.8));
-  color: rgb(68, 36, 68);
+  color: rgb(196, 196, 196);
   position: sticky;
   top: 0;
 }
@@ -45,7 +59,7 @@ nav {
 nav ul {
   list-style-type: none;
 }
-  
+    
 nav ul li {
   display: inline-block;
   margin-right: 1rem;
@@ -63,6 +77,7 @@ nav a:hover, nav a:focus {
 main {
   max-width: 500px;
   margin: auto;
+  margin-left: 370px;
 }
   
 section {
@@ -74,7 +89,8 @@ article {
   border: 1px solid #000;
   border-radius: 10px;
   padding: 1em;
-  background-color: rgb(81, 81, 158);
+  color: rgb(196, 196, 196);
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.8), rgba(23, 39, 51, 0.8), rgba(0, 0, 0, 0.8));
 }
   
 h1 {
